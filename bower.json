@@ -1,0 +1,25 @@
+{
+    "name": "angular-flow-chart",
+    "version": "0.0.1",
+    "authors": [
+        "Aljosa Sljuka <aljosa88@gmail.com>"
+    ],
+    "description": "real-time charts for Angular and Flow",
+    "keywords": [
+        "Angular",
+        "Flow",
+        "Charts"
+    ],
+    "dependencies": {
+        "angular": "^1.3.0",
+        "angular-flow-websocket": "^0.1.0"
+    },
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ]
+}
