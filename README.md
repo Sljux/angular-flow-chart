@@ -1,9 +1,22 @@
-# angular-flow-charts
+# angular-flow-chart
 
-Real-time charts for Angular and FlowThings. Uses [Angular Flow Websocket](https://github.com/Sljux/angular-flow-websocket)
+Real-time charts for Angular and FlowThings. Uses the official [FlowThings Angular Client](https://github.com/flowthings/angular-client)
 for communication with FlowThings server.
 
-Install via Bower `bower install angular-flow-charts --save`
+Install via Bower
+```sh
+bower install angular-flow-chart --save
+```
+
+Add script tag to your `index.html`
+```html
+<script src="bower_components/angular-flow-chart.js"></script>
+```
+
+Include the `ngFlowChart` module as a dependency to your module:
+```js
+angular.module('app', ['ngFlowChart'])
+```
 
 ## Flow Chart
 __flowChart__ directive serves as a base for communication with FlowThings server, initializes data and passes any incoming data to the chart.
@@ -11,19 +24,14 @@ Any actual chart is a plugin directive transcluded within the `<flow-chart></flo
 
 ### Options
 - `flowId`: id of the source Flow
-- `flowSocket`: [socket](https://github.com/Sljux/angular-flow-websocket) to be used for communication
 - `limit`: max number od data points in the graph - used in initial data fetching and passed down to chart plugin
 
-## Flow ChartJS
-__flowChartJs__ is an example of chart plugin, using [ChartJS](https://github.com/nnnick/Chart.js) via [Angular Chart](http://jtblin.github.io/angular-chart.js/)
+### Transclusion Controller
+- Exposes `limit` in the controller, so it is available to transcluded charts
 
-### Options
-- `chartType`: string representing one of chart types supported by ChartJS (line, bar, radar, pie, polar-area, doughnut)
-- `chartOptions`: options to be passed to ChartJS
-- `valueProperty`: path to property of the data point object to be used as chart value. Should be in `path.to.prop` form
-- `valueDefault`: default value to be inserted if the data point object doesn't contain property in the given path. 
-Defaults to `null`, resulting in graph point not being drawn 
-- `labelProperty`: path to property of the data point object to be used as chart label. Should be in `path.to.prop` form.
-If nothing is passed, the labels are auto incremented integers starting at 0
-- `labelDefault`: used if `labelProperty` is passed. Default label value if the data point object doesn't contain property in the given label path
-- `series`, `click`, `hover`, `legend` and `colours` are directly passed to [Angular Chart](http://jtblin.github.io/angular-chart.js/) directive
+### Events
+- `flowChart:init`: fired upon initialisation, initial drops passed to subscribers
+- `flowChart:newDrop`: fired when new drop arrives, passing it to the subscribers
+
+
+For more info on how to build chart plugin, refer to [Angular Flow ChartJS Plugin](https://github.com/Sljux/angular-flow-chartjs)

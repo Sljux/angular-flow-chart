@@ -4,15 +4,15 @@
     "authors": [
         "Aljosa Sljuka <aljosa88@gmail.com>"
     ],
-    "description": "real-time charts for Angular and Flow",
+    "description": "Real-time charts for Angular and FlowThings",
     "keywords": [
         "Angular",
-        "Flow",
-        "Charts"
+        "FlowThings",
+        "Chart"
     ],
     "dependencies": {
         "angular": "^1.3.0",
-        "angular-flow-websocket": "^0.1.0"
+        "flowthings-angular": "~1.0.1"
     },
     "license": "MIT",
     "ignore": [
