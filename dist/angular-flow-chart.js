@@ -10,7 +10,7 @@ function flowChartFactory(flowthings) {
         transclude: true,
         scope: {
             flowId: '=',
-            limit: '='
+            limit:  '='
         },
         template: '<div ng-transclude></div>',
         link: link,
