@@ -8,9 +8,13 @@ Install via Bower
 bower install angular-flow-chart --save
 ```
 
-Add script tag to your `index.html`
+Include the scripts
 ```html
-<script src="bower_components/angular-flow-chart.js"></script>
+<script src="bower_components/Chart.js/Chart.js"></script> <!-- Chart.js -->
+<script src="bower_components/angular-chart.js/dist/angular-chart.min.js"></script> <!-- Angular Chart.js -->
+<script src="bower_components/flowthings-browser/dist/flowthings-browser.min.js"></script> <!-- FlowThings Browser -->
+<script src="bower_components/flowthings-angular/dist/flowthings-angular.min.js"></script> <!-- FlowThings Angular -->
+<script src="bower_components/angular-flow-chart/dist/angular-flow-chart.min.js"></script> <!-- Angular Flow Charts -->
 ```
 
 Include the `ngFlowChart` module as a dependency to your module:
@@ -20,7 +24,7 @@ angular.module('app', ['ngFlowChart'])
 
 ## Flow Chart
 __flowChart__ directive serves as a base for communication with FlowThings server, initializes data and passes any incoming data to the chart.
-Any actual chart is a plugin directive transcluded within the `<flow-chart></flow-chart>` tag.
+Any actual chart is handled by plugin directives transcluded within the `<flow-chart></flow-chart>` tag.
 
 ### Options
 - `flowId`: id of the source Flow
