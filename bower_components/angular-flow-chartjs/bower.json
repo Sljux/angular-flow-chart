@@ -1,0 +1,27 @@
+{
+    "name": "angular-flow-chartjs",
+    "version": "0.0.1",
+    "authors": [
+        "Aljosa Sljuka <aljosa88@gmail.com>"
+    ],
+    "description": "ChartJS plugin for angular-flow-charts",
+    "keywords": [
+        "Angular",
+        "FlowThings",
+        "Chart",
+        "ChartJS"
+    ],
+    "dependencies": {
+        "angular": "^1.3.0",
+        "angular-chart.js": "~0.7.2",
+        "angular-flow-chart": "~0.0.1"
+    },
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ]
+}

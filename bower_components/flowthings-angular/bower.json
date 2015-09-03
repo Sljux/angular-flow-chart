@@ -1,0 +1,26 @@
+{
+  "name": "flowthings-angular",
+  "version": "1.0.1",
+  "homepage": "https://github.com/flowthings/angular-client",
+  "authors": [
+    "flowthings.io <dev@flowthings.io> (https://github.com/flowthings/)"
+  ],
+  "description": "Angular 1.x client for flowthings.io",
+  "main": "./dist/flowthings-angular.js",
+  "keywords": [
+    "flowthings",
+    "angular",
+    "iot"
+  ],
+  "license": "Apache",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "flowthings-browser": "1.0.1"
+  }
+}

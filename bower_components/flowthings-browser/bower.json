@@ -1,0 +1,23 @@
+{
+  "name": "flowthings-browser",
+  "version": "1.0.1",
+  "homepage": "https://github.com/flowthings/browser-client",
+  "authors": [
+    "flowthings.io <dev@flowthings.io> (https://github.com/flowthings/)"
+  ],
+  "description": "Browser client for flowthings.io",
+  "main": "./dist/flowthings-browser.js",
+  "keywords": [
+    "flowthings",
+    "browser",
+    "iot"
+  ],
+  "license": "Apache",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
