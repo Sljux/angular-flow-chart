@@ -1,6 +1,6 @@
 # angular-flow-chart
 
-Real-time charts for Angular and FlowThings. Uses the official [FlowThings Angular Client](https://github.com/flowthings/angular-client)
+Real-time charts for IoT using Angular and FlowThings. Uses the official [FlowThings Angular Client](https://github.com/flowthings/angular-client)
 for communication with FlowThings server.
 
 Install via Bower
