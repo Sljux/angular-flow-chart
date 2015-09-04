@@ -34,12 +34,23 @@ angular.module('app')
     });
 ```
 
+Use the `<flow-chart></flow-chart>` tag in your view, adding a chart plugin within:
+```html
+<flow-chart flow-id="'f123...'" limit="20">
+    <flow-chart-js value-properties="['temperature', 'humidity']" chart-type="line"></flow-chart-js>
+</flow-chart>
+```
+
+Full example can be found [here](http://sljux.github.io/angular-flow-chart).
+
+Angular Flow Chart accepts any JS chart library via a plugin. Example of a plugin using [ChartJS](https://github.com/nnnick/Chart.js)
+can be found [here](https://github.com/Sljux/angular-flow-chartjs).
+
 ## Flow Chart
 __flowChart__ directive serves as a base for communication with FlowThings server, initializes data and passes any incoming data to the chart.
 Any actual chart is handled by plugin directives [transcluded](https://docs.angularjs.org/guide/directive#creating-a-directive-that-wraps-other-elements)
-within the `<flow-chart></flow-chart>` tag.
+within the `<flow-chart></flow-chart>` tag. You can add as many chart plugins as you want.
 
-Full example can be found [here](http://sljux.github.io/angular-flow-chart).
 
 ### Options
 - `flowId`: id of the source Flow
@@ -53,4 +64,4 @@ Full example can be found [here](http://sljux.github.io/angular-flow-chart).
 - `flowChart:newDrop`: fired when new drop arrives, passing it to the subscribers
 
 
-For more info on how to build chart plugin, refer to [Angular Flow ChartJS Plugin](https://github.com/Sljux/angular-flow-chartjs)
+For more info on how to build chart plugin, refer to [Angular Flow ChartJS Plugin](https://github.com/Sljux/angular-flow-chartjs).
