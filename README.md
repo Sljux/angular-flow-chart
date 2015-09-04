@@ -17,14 +17,29 @@ Include the scripts
 <script src="bower_components/angular-flow-chart/dist/angular-flow-chart.min.js"></script> <!-- Angular Flow Charts -->
 ```
 
-Include the `ngFlowChart` module as a dependency to your module:
+Include the `ngFlowChart` module as a dependency to your module, alongside `flowthings` for the official FlowThings library:
 ```js
-angular.module('app', ['ngFlowChart'])
+angular.module('app', ['flowthings', 'ngFlowChart'])
+```
+
+Configure and start FlowThings service (as per [official docs](https://github.com/flowthings/angular-client#example)):
+```js
+angular.module('app')
+    .config(function (flowthingsProvider) {
+        flowthingsProvider.options.account = '< your username >';
+        flowthingsProvider.options.token = '< your token >';
+    })
+    .run(function(flowthings) {
+        flowthings.ws.connect()
+    });
 ```
 
 ## Flow Chart
 __flowChart__ directive serves as a base for communication with FlowThings server, initializes data and passes any incoming data to the chart.
-Any actual chart is handled by plugin directives transcluded within the `<flow-chart></flow-chart>` tag.
+Any actual chart is handled by plugin directives [transcluded](https://docs.angularjs.org/guide/directive#creating-a-directive-that-wraps-other-elements)
+within the `<flow-chart></flow-chart>` tag.
+
+Full example can be found [here](http://sljux.github.io/angular-flow-chart).
 
 ### Options
 - `flowId`: id of the source Flow
