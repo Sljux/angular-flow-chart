@@ -6,10 +6,14 @@ angular.module('Demo')
 
         $scope.chart = {
             options: {
-                animation: false
+                animation: false,
+                scaleShowHorizontalLines: true,
+                scaleShowVerticalLines: false,
+                pointDot: false,
+                datasetStrokeWidth: 0.5
             },
-            series: ['Inside Temperature', 'Outside Temperature'],
-            valueProp: ['inside.temperature', 'outside.temperature'],
+            series: ['Inside Noise', 'Outside Noise'],
+            valueProp: ['inside.noise', 'outside.noise'],
             valueDefaults: 0,
             legend: true
         }
