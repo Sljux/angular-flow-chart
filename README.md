@@ -65,7 +65,7 @@ within the `<flow-chart></flow-chart>` tag. You can add as many chart plugins as
 
 ## Example
 HTML
-```
+```html
 <div ng-app="Demo">
 	<div ng-controller="DemoCtrl">
 		<flow-chart flow-id="flowId" limit="50">
@@ -83,7 +83,7 @@ HTML
 ```
 
 JS
-```
+```js
 angular.module('Demo', ['flowthings', 'ngFlowChart', 'ngFlowChartJs'])
     .config(function (flowthingsProvider) {
         flowthingsProvider.options.account = 'sljux';
