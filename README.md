@@ -1,7 +1,7 @@
 # angular-flow-chart
 
-Real-time charts for IoT using Angular and FlowThings. Uses the official [FlowThings Angular Client](https://github.com/flowthings/angular-client)
-for communication with FlowThings server.
+Real-time charts for IoT using [angular](https://github.com/angular/angular.js) and [flowthings.io](https://flowthings.io/).
+Uses the official [flowthings angular client](https://github.com/flowthings/angular-client) for communication with flowthings.io server.
 
 Install via Bower
 ```sh
@@ -17,12 +17,12 @@ Include the scripts
 <script src="bower_components/angular-flow-chart/dist/angular-flow-chart.min.js"></script> <!-- Angular Flow Charts -->
 ```
 
-Include the `ngFlowChart` module as a dependency to your module, alongside `flowthings` for the official FlowThings library:
+Include the `ngFlowChart` module as a dependency to your module, alongside `flowthings` for the official flowthings.io library:
 ```js
 angular.module('app', ['flowthings', 'ngFlowChart'])
 ```
 
-Configure and start FlowThings service (as per [official docs](https://github.com/flowthings/angular-client#example)):
+Configure and start flowthings service (as per [official docs](https://github.com/flowthings/angular-client#example)):
 ```js
 angular.module('app')
     .config(function (flowthingsProvider) {
@@ -47,7 +47,7 @@ Angular Flow Chart accepts any JS chart library via a plugin. Example of a plugi
 can be found [here](https://github.com/Sljux/angular-flow-chartjs).
 
 ## Flow Chart
-__flowChart__ directive serves as a base for communication with FlowThings server, initializes data and passes any incoming data to the chart.
+__flowChart__ directive serves as a base for communication with flowthings.io server, initializes data and passes any incoming data to the chart.
 Any actual chart is handled by plugin directives [transcluded](https://docs.angularjs.org/guide/directive#creating-a-directive-that-wraps-other-elements)
 within the `<flow-chart></flow-chart>` tag. You can add as many chart plugins as you want.
 
@@ -60,8 +60,55 @@ within the `<flow-chart></flow-chart>` tag. You can add as many chart plugins as
 - Exposes `limit` in the controller, so it is available to transcluded charts
 
 ### Events
-- `flowChart:init`: fired upon initialisation, initial drops passed to subscribers
-- `flowChart:newDrop`: fired when new drop arrives, passing it to the subscribers
+- `flowChart:init` : fired upon initialisation, initial drops passed to subscribers
+- `flowChart:newDrop` : fired when new drop arrives, passing it to the subscribers
 
+## Example
+HTML
+```
+<div ng-app="Demo">
+	<div ng-controller="DemoCtrl">
+		<flow-chart flow-id="flowId" limit="50">
+			<flow-chart-js
+				value-properties="chart.valueProp"
+				value-defaults="chart.valueDefaults"
+				chart-type="line"
+				chart-options="chart.options"
+				series="chart.series"
+				legend="chart.legend">
+			</flow-chart-js>
+		</flow-chart>
+	</div>
+</div>
+```
+
+JS
+```
+angular.module('Demo', ['flowthings', 'ngFlowChart', 'ngFlowChartJs'])
+    .config(function (flowthingsProvider) {
+        flowthingsProvider.options.account = 'sljux';
+        flowthingsProvider.options.token = 'm26E5C3BTxjt8QXsYxbqoL1egCTR';
+    })
+    .run(function(flowthings) {
+        flowthings.ws.connect()
+    })
+    .controller('DemoCtrl', function ($scope) {
+        $scope.flowId = 'f55e6cc2268056d46fb80581c';
+
+        $scope.chart = {
+            options: {
+                animation: false,
+                scaleShowHorizontalLines: true,
+                scaleShowVerticalLines: false,
+                pointDot: false,
+                datasetStrokeWidth: 0.5
+            },
+            series: ['Inside Noise', 'Outside Noise'],
+            valueProp: ['inside.noise', 'outside.noise'],
+            valueDefaults: 0,
+            legend: true
+        }
+    });
+```
 
 For more info on how to build chart plugin, refer to [Angular Flow ChartJS Plugin](https://github.com/Sljux/angular-flow-chartjs).
