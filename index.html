@@ -16,14 +16,14 @@
 <section class="page-header">
     <h1 class="project-name">Angular Flow Charts</h1>
 
-    <h2 class="project-tagline">Real-time charts for IoT with Angular and FlowThings</h2>
+    <h2 class="project-tagline">Real-time charts for IoT with Angular and flowthings.io</h2>
     <a href="https://github.com/Sljux/angular-flow-chart" class="btn">View on GitHub</a>
     <a href="https://github.com/Sljux/angular-flow-chart/zipball/master" class="btn">Download .zip</a>
     <a href="https://github.com/Sljux/angular-flow-chart/tarball/master" class="btn">Download .tar.gz</a>
 </section>
 
 <section class="main-content">
-    <div ng-app="Demo">
+    <div ng-app="Demo" id="demo">
         <div ng-controller="DemoCtrl">
             <flow-chart flow-id="flowId" limit="50">
                 <flow-chart-js
@@ -38,61 +38,59 @@
         </div>
     </div>
     <div>
-
         <p>HTML</p>
 
-<pre><code>&lt;div ng-app="Demo"&gt;
-    &lt;div ng-controller="DemoCtrl"&gt;
-        &lt;flow-chart flow-id="flowId" limit="50"&gt;
-            &lt;flow-chart-js
-                value-properties="chart.valueProp"
-                value-defaults="chart.valueDefaults"
-                chart-type="line"
-                chart-options="chart.options"
-                series="chart.series"
-                legend="chart.legend"&gt;
-            &lt;/flow-chart-js&gt;
-        &lt;/flow-chart&gt;
-    &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+        <div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">div</span> <span class="pl-e">ng-app</span>=<span class="pl-s"><span class="pl-pds">"</span>Demo<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">ng-controller</span>=<span class="pl-s"><span class="pl-pds">"</span>DemoCtrl<span class="pl-pds">"</span></span>&gt;
+        &lt;<span class="pl-ent">flow-chart</span> <span class="pl-e">flow-id</span>=<span class="pl-s"><span class="pl-pds">"</span>flowId<span class="pl-pds">"</span></span> <span class="pl-e">limit</span>=<span class="pl-s"><span class="pl-pds">"</span>50<span class="pl-pds">"</span></span>&gt;
+            &lt;<span class="pl-ent">flow-chart-js</span>
+                <span class="pl-e">value-properties</span>=<span class="pl-s"><span class="pl-pds">"</span>chart.valueProp<span class="pl-pds">"</span></span>
+                <span class="pl-e">value-defaults</span>=<span class="pl-s"><span class="pl-pds">"</span>chart.valueDefaults<span class="pl-pds">"</span></span>
+                <span class="pl-e">chart-type</span>=<span class="pl-s"><span class="pl-pds">"</span>line<span class="pl-pds">"</span></span>
+                <span class="pl-e">chart-options</span>=<span class="pl-s"><span class="pl-pds">"</span>chart.options<span class="pl-pds">"</span></span>
+                <span class="pl-e">series</span>=<span class="pl-s"><span class="pl-pds">"</span>chart.series<span class="pl-pds">"</span></span>
+                <span class="pl-e">legend</span>=<span class="pl-s"><span class="pl-pds">"</span>chart.legend<span class="pl-pds">"</span></span>&gt;
+            &lt;/<span class="pl-ent">flow-chart-js</span>&gt;
+        &lt;/<span class="pl-ent">flow-chart</span>&gt;
+    &lt;/<span class="pl-ent">div</span>&gt;
+&lt;/<span class="pl-ent">div</span>&gt;</pre></div>
 
         <p>JS</p>
 
-<pre><code>angular.module('Demo', ['flowthings', 'ngFlowChart', 'ngFlowChartJs'])
-    .config(function (flowthingsProvider) {
-        flowthingsProvider.options.account = 'sljux';
-        flowthingsProvider.options.token = 'm26E5C3BTxjt8QXsYxbqoL1egCTR';
+        <div class="highlight highlight-js"><pre>angular.module(<span class="pl-s"><span class="pl-pds">'</span>Demo<span class="pl-pds">'</span></span>, [<span class="pl-s"><span class="pl-pds">'</span>flowthings<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>ngFlowChart<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>ngFlowChartJs<span class="pl-pds">'</span></span>])
+    .config(<span class="pl-k">function</span> (<span class="pl-smi">flowthingsProvider</span>) {
+        flowthingsProvider.<span class="pl-c1">options</span>.account <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>sljux<span class="pl-pds">'</span></span>;
+        flowthingsProvider.<span class="pl-c1">options</span>.token <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>m26E5C3BTxjt8QXsYxbqoL1egCTR<span class="pl-pds">'</span></span>;
     })
-    .run(function(flowthings) {
+    .run(<span class="pl-k">function</span>(<span class="pl-smi">flowthings</span>) {
         flowthings.ws.connect()
     })
-    .controller('DemoCtrl', function ($scope) {
-        $scope.flowId = 'f55e6cc2268056d46fb80581c';
+    .controller(<span class="pl-s"><span class="pl-pds">'</span>DemoCtrl<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span class="pl-smi">$scope</span>) {
+        $scope.flowId <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>f55e6cc2268056d46fb80581c<span class="pl-pds">'</span></span>;
 
-        $scope.chart = {
-            options: {
-                animation: false,
-                scaleShowHorizontalLines: true,
-                scaleShowVerticalLines: false,
-                pointDot: false,
-                datasetStrokeWidth: 0.5
+        $scope.chart <span class="pl-k">=</span> {
+            options<span class="pl-k">:</span> {
+                animation<span class="pl-k">:</span> <span class="pl-c1">false</span>,
+                scaleShowHorizontalLines<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+                scaleShowVerticalLines<span class="pl-k">:</span> <span class="pl-c1">false</span>,
+                pointDot<span class="pl-k">:</span> <span class="pl-c1">false</span>,
+                datasetStrokeWidth<span class="pl-k">:</span> <span class="pl-c1">0.5</span>
             },
-            series: ['Inside Noise', 'Outside Noise'],
-            valueProp: ['inside.noise', 'outside.noise'],
-            valueDefaults: 0,
-            legend: true
+            series<span class="pl-k">:</span> [<span class="pl-s"><span class="pl-pds">'</span>Inside Noise<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>Outside Noise<span class="pl-pds">'</span></span>],
+            valueProp<span class="pl-k">:</span> [<span class="pl-s"><span class="pl-pds">'</span>inside.noise<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>outside.noise<span class="pl-pds">'</span></span>],
+            valueDefaults<span class="pl-k">:</span> <span class="pl-c1">0</span>,
+            legend<span class="pl-k">:</span> <span class="pl-c1">true</span>
         }
-    });
-</code></pre>
+    });</pre></div>
 
     </div>
     <article>
         <h1><a id="user-content-angular-flow-chart" class="anchor" href="#angular-flow-chart" aria-hidden="true"><span
                 class="octicon octicon-link"></span></a>Angular Flow Chart</h1>
 
-        <p>Real-time charts for IoT using Angular and FlowThings. Uses the official
-            <a href="https://github.com/flowthings/angular-client">FlowThings Angular Client</a>
-            for communication with FlowThings server.</p>
+        <p>Real-time charts for IoT using <a href="https://angularjs.org/">Angular</a> and <a href="https://flowthings.io/">flowthings.io</a>. Uses the official
+            <a href="https://github.com/flowthings/angular-client">flowthings angular client</a>
+            for communication with flowthings.io server.</p>
 
         <p>Install via Bower</p>
 
@@ -116,7 +114,7 @@
         </div>
 
         <p>Include the <code>ngFlowChart</code> module as a dependency to your module, alongside <code>flowthings</code>
-            for the official FlowThings library:</p>
+            for the official flowthings.io library:</p>
 
         <div class="highlight highlight-js">
 			<pre>angular.module(<span class="pl-s"><span class="pl-pds">'</span>app<span class="pl-pds">'</span></span>, [<span
@@ -124,7 +122,7 @@
                     class="pl-s"><span class="pl-pds">'</span>ngFlowChart<span class="pl-pds">'</span></span>])</pre>
         </div>
 
-        <p>Configure and start FlowThings service (as per
+        <p>Configure and start flowthings service (as per
             <a href="https://github.com/flowthings/angular-client#example">official docs</a>):</p>
 
         <div class="highlight highlight-js"><pre>angular.module(<span class="pl-s"><span class="pl-pds">'</span>app<span
@@ -153,16 +151,15 @@
 &lt;/<span class="pl-ent">flow-chart</span>&gt;</pre>
         </div>
 
-        <p>Angular Flow Chart accepts any JS chart library via a plugin. Example of a plugin using
-            <a href="https://github.com/nnnick/Chart.js">ChartJS</a>
-            can be found <a href="https://github.com/Sljux/angular-flow-chartjs">here</a>.</p>
+        <p>Angular Flow Chart accepts any JS chart library via a plugin. Example on <a href="#demo">top of the page</a>
+            uses <a href="https://github.com/nnnick/Chart.js">ChartJS</a></p>
 
         <h2><a id="user-content-flow-chart"
                class="anchor"
                href="#flow-chart"
                aria-hidden="true"><span class="octicon octicon-link"></span></a>Flow Chart</h2>
 
-        <p><strong>flowChart</strong> directive serves as a base for communication with FlowThings server, initializes
+        <p><strong>flowChart</strong> directive serves as a base for communication with flowthings.io server, initializes
             data and passes any incoming data to the chart.
             Any actual chart is handled by plugin directives
             <a href="https://docs.angularjs.org/guide/directive#creating-a-directive-that-wraps-other-elements">transcluded</a>
